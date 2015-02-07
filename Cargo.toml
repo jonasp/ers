@@ -3,3 +3,9 @@
 name = "ers"
 version = "0.0.1"
 authors = ["Jonas Pollok <jonas.p@gmail.com>"]
+
+description = "A rewrite system based on s-expressions and pattern matching"
+homepage = "http://github.com/jonasp/ers"
+repository = "http://github.com/jonasp/ers"
+
+license = "AGPL-3.0"
