@@ -66,7 +66,7 @@ fn match_expression<'a>(e: &'a Expression, p: &Expression, bs: &mut HashMap<Stri
             i == j
         }
         (&Expression::List(ref es), &Expression::List(ref ps)) => {
-            match_seq(&**es, &**ps, bs)
+            match_seq(es, ps, bs)
         }
         _ => { false } // catch all - should not happen
     }

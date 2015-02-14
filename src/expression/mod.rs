@@ -121,7 +121,7 @@ impl Expression {
                     &Expression::List(ref es) => {
                         let mut v: Vec<Expression> = Vec::new();
                         let mut replaced = false;
-                        for e in &**es {
+                        for e in es.iter() {
                             let (new_e, r) = e.replace_rec(pattern, template.clone());
                             if r {
                                 replaced = true;
@@ -143,7 +143,7 @@ impl Clone for Expression {
         match self {
             &Expression::List(ref es) => {
                 let mut v: Vec<Expression> = Vec::new();
-                for e in &**es {
+                for e in es.iter() {
                     v.push(e.clone());
                 }
                 Expression::List(v.into_boxed_slice())
