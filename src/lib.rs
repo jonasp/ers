@@ -113,8 +113,6 @@
 #![staged_api]
 #![unstable(feature = "ers1")]
 
-#![feature(collections)]
-
 #![deny(missing_docs)]
 
 #![crate_type = "rlib"]
