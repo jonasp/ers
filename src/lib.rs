@@ -113,7 +113,6 @@
 #![staged_api]
 #![unstable(feature = "ers1")]
 
-#![feature(core)]
 #![feature(collections)]
 
 #![deny(missing_docs)]
