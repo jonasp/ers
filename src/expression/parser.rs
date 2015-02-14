@@ -89,7 +89,7 @@ impl<T: Iterator<Item=char>> Parser<T> {
                     // consume ')'
                     self.bump();
 
-                    return Ok(Expression::List(v.into_boxed_slice()))
+                    return Ok(Expression::List(v))
                 }
                 // EOF
                 None => { return Err(ParserError::SyntaxError(ErrorCode::UnbalancedParens)); }

@@ -68,7 +68,7 @@ impl Bind for Expression {
                              v.push(s.clone());
                          }
 
-                         Expression::List(v.into_boxed_slice())
+                         Expression::List(v)
 
                      }
                      Some(&Binding::Expression(e)) => {
@@ -87,13 +87,11 @@ impl Bind for Expression {
     }
 }
 
-impl Bind for Box<[Expression]> {
-    fn bind(self, bs: &HashMap<String, Binding>) -> Box<[Expression]> {
+impl Bind for Vec<Expression> {
+    fn bind(self, bs: &HashMap<String, Binding>) -> Vec<Expression> {
         let mut v: Vec<Expression> = Vec::new();
 
-        // TODO: implement IntoIter on boxed slice
-        //       but into_vec() is basically free
-        for e in self.into_vec() {
+        for e in self {
             // check if a binding could be a sequence as
             // we need to insert it at this point.
             // TODO: This match returns true/false and executes a
@@ -116,6 +114,6 @@ impl Bind for Box<[Expression]> {
             }
         }
 
-        v.into_boxed_slice()
+        v
     }
 }

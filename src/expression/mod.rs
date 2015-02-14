@@ -26,7 +26,7 @@ mod parser;
 #[unstable(feature = "ers1")]
 pub enum Expression {
     /// Contains a boxed slice of `Expressions`
-    List(Box<[Expression]>),
+    List(Vec<Expression>),
     /// Represents a string expression
     Atom(String),
     /// An unnamed pattern matching a single expression
@@ -128,7 +128,7 @@ impl Expression {
                             }
                             v.push(new_e);
                         }
-                        (Expression::List(v.into_boxed_slice()), replaced)
+                        (Expression::List(v), replaced)
                     }
                     _ => (self.clone(), false) // not replaced
                 }
@@ -146,7 +146,7 @@ impl Clone for Expression {
                 for e in es.iter() {
                     v.push(e.clone());
                 }
-                Expression::List(v.into_boxed_slice())
+                Expression::List(v)
             }
             &Expression::Atom(ref s) => {
                 Expression::Atom(s.clone())
@@ -218,9 +218,9 @@ mod tests {
         let c = Expression::Atom("c".to_string());
         let d = Expression::Atom("d".to_string());
 
-        let ls = Expression::List(vec![c, d].into_boxed_slice());
+        let ls = Expression::List(vec![c, d]);
 
-        let expr = Expression::List(vec![a, b, ls].into_boxed_slice());
+        let expr = Expression::List(vec![a, b, ls]);
 
         assert_eq!(format!("{:?}", expr), "(a b (c d))");
     }

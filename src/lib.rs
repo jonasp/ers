@@ -41,10 +41,10 @@
 //! let y = Expression::Atom("y".to_string());
 //! let z = Expression::Atom("z".to_string());
 //!
-//! let ls = Expression::List(vec![y, z].into_boxed_slice());
+//! let ls = Expression::List(vec![y, z]);
 //! format!("{:?}", ls); // => "(y z)"
 //!
-//! let ers = Expression::List(vec![x, ls].into_boxed_slice());
+//! let ers = Expression::List(vec![x, ls]);
 //! format!("{:?}", ers); // => "(x (y z))"
 //! ```
 //!
