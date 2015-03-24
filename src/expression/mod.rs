@@ -181,7 +181,7 @@ impl fmt::Debug for Expression {
                 let mut s = String::new();
                 for i in (0..es.len()) {
                     let f = format!("{:?}", es[i]);
-                    s = s + &f[];
+                    s = s + &f[..];
                     if i != es.len() - 1 {
                         s.push(' ');
                     }
